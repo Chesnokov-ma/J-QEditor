@@ -16,7 +16,7 @@
 ## Запуск
 
 ```bash
-git clone
+git clone https://github.com/Chesnokov-ma/J-QEditor.git
 python -m venv venv
 .venv/bin/activate
 pip install -r requirements.txt
@@ -26,7 +26,7 @@ python main.py
 ## Сборка
 
 ```bash
-git clone
+git clone https://github.com/Chesnokov-ma/J-QEditor.git
 python -m venv venv
 .venv/bin/activate
 pip install -r requirements.txt
