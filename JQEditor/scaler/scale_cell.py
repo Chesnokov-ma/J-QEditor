@@ -24,11 +24,14 @@ def _scale_cell(self):
         border_v_val = int(self.inputLine_bv.text())
         border_h_val = int(self.inputLine_bh.text())
 
-        if border_v_val != 1 and border_v_val != -1:
-            raise
+        if border_v_val != -1:
+            if border_v_val != 1:
+                raise
 
-        if border_h_val != 1 and border_h_val != 1:
-            raise
+        if border_h_val != -1:
+            if border_h_val != 1:
+                raise
+
     except:
         QMessageBox.critical(self, 'Ошибка!',
                              'Разрешенные угловые значения: 1 и -1')
@@ -51,7 +54,7 @@ def _scale_cell(self):
                 # угловые значения
                 if skip != (scale - 1):
                     # print(border_h_val, end='    ')
-                    horJ_val_scaled.append(border_h_val)
+                    horJ_val_scaled.append(border_v_val)
                     skip += 1
                 else:
                     # print()
@@ -78,7 +81,7 @@ def _scale_cell(self):
             for _ in range(scale):
                 for v in range(n):
                     # print(border_v_val, end=' ')
-                    verJ_val_scaled.append(border_v_val)
+                    verJ_val_scaled.append(border_h_val)
                 # print('    ', end='')
             # print()
             skip += 1
