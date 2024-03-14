@@ -34,3 +34,7 @@ python -m PyInstaller --onefile --windowed -n JQEditor main.py
 ```
 
 Исполняемый файл находится в _/dist/_.
+
+## Сборка
+
+Решетки после генерации могут быть найдены в _/scaled/_ 
