@@ -4,13 +4,14 @@ from PyQt6 import QtCore
 
 
 def drawChessBoard(self, qp, n):
-    """Нарисовать сетку и текст"""
+    """Отрисовка сетки и текста"""
     base_n = n
     n = n * 2
     even = (n % 2 == 0)
 
     w = self.width() / (n - 1)
     h = (self.height() - self.y_offset) / (n - 1)
+    MENU_OFFSET = 20    # 20 пикселей по Y для корректной отрисовки меню
 
     self.spins = []
     self.ver = []
@@ -53,7 +54,7 @@ def drawChessBoard(self, qp, n):
 
                 temp -= 1
 
-            r = QRect(int(x), int(y), int(w), int(h))
+            r = QRect(int(x), int(y + MENU_OFFSET), int(w), int(h))
             qp.drawRect(r)
             x += w
 

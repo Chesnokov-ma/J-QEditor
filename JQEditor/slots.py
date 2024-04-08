@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QFileDialog, QMessageBox
 from PyQt6.QtCore import pyqtSlot
-from JQEditor.func import check_cell_size
+from JQEditor.func import _check_cell_size
 from math import sqrt
 
 
@@ -13,7 +13,7 @@ def read_button_clicked(self):
             self.n = int(sqrt(int(fpath.split('_')[0].replace('cell', '').split('/')[-1])))
             self.read_data(fpath)
         except:
-            self.n = check_cell_size(fpath)
+            self.n = _check_cell_size(fpath)
             if self.n:
                 self.read_data(fpath)
             else:
@@ -32,19 +32,35 @@ def write_button_clicked(self):
 
 
 @pyqtSlot()
-def all_down_button_clicked(self):
+def all_up_button_clicked(self):
     """Кнопка все +=1"""
     if self.is_downloaded:
-        val = None
-        if self.all_down:
-            val = 1
-            self.all_down = False
-            self.all_down_button.setText('Все -1')
-        else:
-            val = -1
-            self.all_down = True
-            self.all_down_button.setText('Все +1')
+        val = 1
+        self.all_down = True
+        # self.all_down_button.setText('Все +1')
 
         self.verJ_val = [val for _ in range(self.n * self.n - self.n)]
         self.horJ_val = [val for _ in range(self.n * self.n - self.n)]
+        self.update()
+
+
+@pyqtSlot()
+def all_down_button_clicked(self):
+    """Кнопка все +=1"""
+    if self.is_downloaded:
+        val = -1
+        self.all_down = True
+        # self.all_down_button.setText('Все +1')
+
+        self.verJ_val = [val for _ in range(self.n * self.n - self.n)]
+        self.horJ_val = [val for _ in range(self.n * self.n - self.n)]
+        self.update()
+
+
+@pyqtSlot()
+def invert_clicked(self):
+    if self.is_downloaded:
+        for i in range(len(self.verJ_val)):
+            self.verJ_val[i] *= -1
+            self.horJ_val[i] *= -1
         self.update()

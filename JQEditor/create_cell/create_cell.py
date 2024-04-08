@@ -38,5 +38,5 @@ def _create_cell(self):
                     f.write(f'{matrix[i][j]} ')
                 f.write('\n')
 
-        self.parent().read_tmp_cell(n, filename)
+        self.parent()._read_tmp_cell(n, filename)
         self.close()

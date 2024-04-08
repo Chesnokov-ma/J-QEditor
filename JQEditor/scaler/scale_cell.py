@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtWidgets import QMessageBox, QFileDialog
 from os import path, mkdir
 
 
@@ -36,6 +36,9 @@ def _scale_cell(self):
         QMessageBox.critical(self, 'Ошибка!',
                              'Разрешенные угловые значения: 1 и -1')
         return
+
+    # закрыть окно
+    self.close()
 
     verJ_val_scaled = []
     horJ_val_scaled = []
@@ -90,8 +93,8 @@ def _scale_cell(self):
         # print()
 
     # 3. Запись в файл масштабированной решетки
-    if not path.exists('./scaled/'):
-        mkdir('./scaled/')
+    # if not path.exists('./scaled/'):
+    #     mkdir('./scaled/')
 
     # Например, для решетки из 9 спинов (N)
     # 81 знаков по вертикали, 81 по горизонтали
@@ -111,7 +114,9 @@ def _scale_cell(self):
             J_full_scaled[k] = verJ_val_scaled[i * N + j]
             k += N * N + 1
 
-    with open(f'./scaled/cell{N * N}_scaled.dat', 'w') as f:
+    fpath, _ = QFileDialog.getSaveFileName(None, 'Запись файла', f'./cell{N * N}_scaled.dat', 'Dat (*.dat);;Text (*.txt)')
+
+    with open(fpath, 'w') as f:
         symbols = 0
         for j in J_full_scaled:
             f.write(f'{j} ')
@@ -119,6 +124,3 @@ def _scale_cell(self):
             if symbols == N * N:
                 f.write('\n')
                 symbols = 0
-
-    # 4. Закрыть окно
-    self.close()
