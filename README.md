@@ -7,12 +7,11 @@
 - Визуализация распределения обменных интегралов из файлов типа cell (_/examples/_).
 - Редактирование значений обменных интегралов (+-J).
 - Масштабирование систем с сохранением паттерна распределения.
-- Выборка случайных спинов с переворотом соседних обменных интегралов.
 - Создание пустых систем без cell-файлов.
 
 ## Начало работы
 
-Последняя версия в разделе _Releases_.
+Последняя версия в _Releases_.
 
 ## Запуск
 
@@ -31,7 +30,12 @@ git clone https://github.com/Chesnokov-ma/J-QEditor.git
 python -m venv venv
 .venv/bin/activate
 pip install -r requirements.txt
+pip install pyinstaller
 python -m PyInstaller --onefile --windowed -n JQEditor main.py
 ```
 
 Исполняемый файл находится в _/dist/_.
+
+## Масштабирование
+
+Решетки после генерации могут быть найдены в _/scaled/_
