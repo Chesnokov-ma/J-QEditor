@@ -32,16 +32,25 @@ def mousePressEvent(self, event):
         vi = 0
         for rect in self.ver:
             if (rect.x() + rect.width()) > click_pos.x() > rect.x() and (rect.y() + rect.height()) > click_pos.y() > rect.y():
-                # print(vi)
                 self.verJ_val[vi] *= -1
             vi += 1
 
         hi = 0
         for rect in self.hor:
             if (rect.x() + rect.width()) > click_pos.x() > rect.x() and (rect.y() + rect.height()) > click_pos.y() > rect.y():
-                # print(hi)
                 self.horJ_val[hi] *= -1
             hi += 1
+
+        si = 0
+        for rect in self.spins:
+            if (rect.x() + rect.width()) > click_pos.x() > rect.x() and (rect.y() + rect.height()) > click_pos.y() > rect.y():
+                if self.spins_val[si] == 1:
+                    self.spins_val[si] = 0
+                elif self.spins_val[si] == 0:
+                    self.spins_val[si] = 1
+            si += 1
+
+        self.calc.get_E(self.n, self.spins_data.spins_val, self.horJ_val, self.verJ_val)
 
         if self.is_downloaded:
             self.update()

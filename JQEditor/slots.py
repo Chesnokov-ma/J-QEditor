@@ -64,3 +64,13 @@ def invert_clicked(self):
             self.verJ_val[i] *= -1
             self.horJ_val[i] *= -1
         self.update()
+
+@pyqtSlot()
+def readmfsys_button_clicked(self):
+    if self.is_downloaded:
+        if self.spins_data.read_mfsys() == 0:
+            self.mfsys_is_dowloaded = True
+            self.spins_val = self.spins_data.spins_val
+            self.update()
+        elif self.spins_data.read_mfsys() == 1:
+            QMessageBox.critical(self, 'Ошибка!', 'Неверный формат данных или размер')

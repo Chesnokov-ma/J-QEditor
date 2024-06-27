@@ -70,11 +70,11 @@ def _randomize_cell(self):
         # print(current_spin)
 
     # записать результат
-    fpath, _ = QFileDialog.getSaveFileName(None, 'Запись файла', f'./cell{n * n}_rand.dat', 'Dat (*.dat);;Text (*.txt)')
-    self.parent().write_data(fpath)
-
-    # записать случайные спины
-    spins_fpath = f"{'/'.join(fpath.split('/')[:-1])}/spins{n * n}_{len(random_spins)}rand.txt"
-    with open(spins_fpath, 'w') as f:
-        for spin in random_spins:
-            f.write(f'{spin}, ')
+    # fpath, _ = QFileDialog.getSaveFileName(None, 'Запись файла', f'./cell{n * n}_rand.dat', 'Dat (*.dat);;Text (*.txt)')
+    # self.parent().write_data(fpath)
+    #
+    # # записать случайные спины
+    # spins_fpath = f"{'/'.join(fpath.split('/')[:-1])}/spins{n * n}_{len(random_spins)}rand.txt"
+    # with open(spins_fpath, 'w') as f:
+    #     for spin in random_spins:
+    #         f.write(f'{spin}, ')

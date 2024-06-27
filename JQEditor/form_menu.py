@@ -5,6 +5,7 @@ import sys
 def create_menu(self):
     file_menu = self.menuBar().addMenu("&Файл")
     action_menu = self.menuBar().addMenu("&Действие")
+    design_menu = self.menuBar().addMenu("&Вид")
     help_menu = self.menuBar().addMenu("&Справка")
 
     # Файл - Новый
@@ -18,6 +19,12 @@ def create_menu(self):
     open_action.setShortcut("Ctrl+O")
     open_action.triggered.connect(self.read_button_clicked)
     file_menu.addAction(open_action)
+
+    # Файл - Загрузить спины
+    spin_action = QAction("&Загрузить спины", self)
+    # open_action.setShortcut("Ctrl+O")
+    spin_action.triggered.connect(self.readmfsys_button_clicked)
+    file_menu.addAction(spin_action)
 
     # Файл - Сохранить как
     save_action = QAction("&Сохранить как", self)
@@ -68,6 +75,17 @@ def create_menu(self):
     help_menu.addAction(help_2)
     help_menu.addSeparator()
     help_menu.addAction(help_3)
+
+    # Вид
+    numbers_drawn_action = QAction("&Подписи", self)
+    numbers_not_drawn_action = QAction("&Подписи отсутствуют", self)
+    numbers_drawn_action.triggered.connect(self._set_numbers)
+    numbers_not_drawn_action.triggered.connect(self._clear_numbers)
+    design_menu.addAction(numbers_drawn_action)
+    design_menu.addAction(numbers_not_drawn_action)
+
+
+
 
 
 

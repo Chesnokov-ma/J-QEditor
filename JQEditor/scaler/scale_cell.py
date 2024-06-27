@@ -114,6 +114,12 @@ def _scale_cell(self):
             J_full_scaled[k] = verJ_val_scaled[i * N + j]
             k += N * N + 1
 
+    # Перерисовка
+    # self.parent().n = N
+    # self.parent().J_full = J_full_scaled
+    # self.parent().verJ_val = verJ_val_scaled
+    # self.parent().horJ_val = horJ_val_scaled
+
     fpath, _ = QFileDialog.getSaveFileName(None, 'Запись файла', f'./cell{N * N}_scaled.dat', 'Dat (*.dat);;Text (*.txt)')
 
     with open(fpath, 'w') as f:

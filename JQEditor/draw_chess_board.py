@@ -79,9 +79,14 @@ def drawChessBoard(self, qp, n):
     self.ver = self.ver[:base_n * base_n - base_n]
     self.hor = self.hor[:base_n * base_n - base_n]
 
-    for rect in self.spins:
-        qp.drawText(rect, QtCore.Qt.AlignmentFlag.AlignHCenter, '↑')
-    for i in range(len(self.ver)):
-        qp.drawText(self.ver[i], QtCore.Qt.AlignmentFlag.AlignHCenter, str(self.verJ_val[i]))
-    for i in range(len(self.hor)):
-        qp.drawText(self.hor[i], QtCore.Qt.AlignmentFlag.AlignHCenter, str(self.horJ_val[i]))
+    if self.numbers_drown:
+
+        for i in range(len(self.spins)):
+            if self.spins_val[i] == 0:
+                qp.drawText(self.spins[i], QtCore.Qt.AlignmentFlag.AlignHCenter, '↓')
+            elif self.spins_val[i] == 1:
+                qp.drawText(self.spins[i], QtCore.Qt.AlignmentFlag.AlignHCenter, '↑')
+        for i in range(len(self.ver)):
+            qp.drawText(self.ver[i], QtCore.Qt.AlignmentFlag.AlignHCenter, str(self.verJ_val[i]))
+        for i in range(len(self.hor)):
+            qp.drawText(self.hor[i], QtCore.Qt.AlignmentFlag.AlignHCenter, str(self.horJ_val[i]))
