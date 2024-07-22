@@ -13,6 +13,7 @@ class RandomizeCellInputWindow(QMainWindow):
         self.inputLine = QLineEdit(self)
         self.button = QPushButton("Начать", self)
         self.inputLine.setPlaceholderText("Количество итераций")
+        self.button.setFocus()
         self.button.clicked.connect(self._randomize_cell)
 
         # валидатор для QLineEdit

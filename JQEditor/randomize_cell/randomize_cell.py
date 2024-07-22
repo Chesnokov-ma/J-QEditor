@@ -69,6 +69,10 @@ def _randomize_cell(self):
 
         # print(current_spin)
 
+        # обновить информацию о системе
+        self.parent().update_info()
+
+
     # записать результат
     # fpath, _ = QFileDialog.getSaveFileName(None, 'Запись файла', f'./cell{n * n}_rand.dat', 'Dat (*.dat);;Text (*.txt)')
     # self.parent().write_data(fpath)

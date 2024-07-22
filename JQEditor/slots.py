@@ -8,7 +8,7 @@ from math import sqrt
 def read_button_clicked(self):
     """Кнопка чтения файла"""
     fpath = QFileDialog.getOpenFileName(caption='Чтение файла', filter="Data (*.dat *.txt);;All files (*.*)")[0]
-    if fpath:
+    if fpath != '':
         try:
             self.n = int(sqrt(int(fpath.split('_')[0].replace('cell', '').split('/')[-1])))
             self.read_data(fpath)
@@ -18,6 +18,8 @@ def read_button_clicked(self):
                 self.read_data(fpath)
             else:
                 QMessageBox.critical(self, 'Ошибка!', 'Неправильный формат файла!')
+
+        self._update_app()
 
 
 @pyqtSlot()
@@ -30,6 +32,8 @@ def write_button_clicked(self):
         except:
             pass
 
+        self._update_app()
+
 
 @pyqtSlot()
 def all_up_button_clicked(self):
@@ -41,7 +45,7 @@ def all_up_button_clicked(self):
 
         self.verJ_val = [val for _ in range(self.n * self.n - self.n)]
         self.horJ_val = [val for _ in range(self.n * self.n - self.n)]
-        self.update()
+        self._update_app()
 
 
 @pyqtSlot()
@@ -54,7 +58,7 @@ def all_down_button_clicked(self):
 
         self.verJ_val = [val for _ in range(self.n * self.n - self.n)]
         self.horJ_val = [val for _ in range(self.n * self.n - self.n)]
-        self.update()
+        self._update_app()
 
 
 @pyqtSlot()
@@ -63,7 +67,8 @@ def invert_clicked(self):
         for i in range(len(self.verJ_val)):
             self.verJ_val[i] *= -1
             self.horJ_val[i] *= -1
-        self.update()
+        self._update_app()
+
 
 @pyqtSlot()
 def readmfsys_button_clicked(self):
@@ -71,6 +76,7 @@ def readmfsys_button_clicked(self):
         if self.spins_data.read_mfsys() == 0:
             self.mfsys_is_dowloaded = True
             self.spins_val = self.spins_data.spins_val
-            self.update()
+            self._update_app()
+
         elif self.spins_data.read_mfsys() == 1:
             QMessageBox.critical(self, 'Ошибка!', 'Неверный формат данных или размер')

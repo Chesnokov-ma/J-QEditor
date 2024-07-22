@@ -35,10 +35,12 @@ def read_data(self, file_name, del_input_file=False):
     self.is_downloaded = True
     self.mfsys_is_dowloaded = False
 
+    # Задать единичное пространство между спинами
     self.spins_data.make_default_Ising(self.n)
     self.spins_val = self.spins_data.spins_val
-    self.calc.get_E(self.n, self.spins_data.spins_val, self.horJ_val, self.verJ_val)
-    self.update()
+
+    # обновить внешний вид приложения
+    self._update_app()
 
 
 def write_data(self, file_name):

@@ -79,10 +79,15 @@ def create_menu(self):
     # Вид
     numbers_drawn_action = QAction("&Подписи", self)
     numbers_not_drawn_action = QAction("&Подписи отсутствуют", self)
+    only_spins_drawn_action = QAction("&Только спины", self)
+
     numbers_drawn_action.triggered.connect(self._set_numbers)
     numbers_not_drawn_action.triggered.connect(self._clear_numbers)
+    only_spins_drawn_action.triggered.connect(self._only_spins)
     design_menu.addAction(numbers_drawn_action)
     design_menu.addAction(numbers_not_drawn_action)
+    design_menu.addAction(only_spins_drawn_action)
+
 
 
 

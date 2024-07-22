@@ -5,6 +5,7 @@ from PyQt6 import QtCore
 
 def drawChessBoard(self, qp, n):
     """Отрисовка сетки и текста"""
+
     base_n = n
     n = n * 2
     even = (n % 2 == 0)
@@ -38,8 +39,10 @@ def drawChessBoard(self, qp, n):
                     verJ = True
                     if self.verJ_val[vi] == 1:
                         qp.setBrush(QColor(255, 170, 170))
-                    else:
+                    elif self.verJ_val[vi] == -1:
                         qp.setBrush(QColor(170, 170, 255))
+                    else:
+                        qp.setBrush(QColor(255, 255, 255))
                     vi += 1
                     pass
                 else:
@@ -48,8 +51,10 @@ def drawChessBoard(self, qp, n):
                     if _ignore % base_n != 0:
                         if self.horJ_val[hi] == 1:
                             qp.setBrush(QColor(255, 170, 170))
-                        else:
+                        elif self.horJ_val[hi] == -1:
                             qp.setBrush(QColor(170, 170, 255))
+                        else:
+                            qp.setBrush(QColor(255, 255, 255))
                         hi += 1
 
                 temp -= 1
@@ -79,13 +84,14 @@ def drawChessBoard(self, qp, n):
     self.ver = self.ver[:base_n * base_n - base_n]
     self.hor = self.hor[:base_n * base_n - base_n]
 
-    if self.numbers_drown:
-
+    if self.spins_drown:
         for i in range(len(self.spins)):
             if self.spins_val[i] == 0:
                 qp.drawText(self.spins[i], QtCore.Qt.AlignmentFlag.AlignHCenter, '↓')
             elif self.spins_val[i] == 1:
                 qp.drawText(self.spins[i], QtCore.Qt.AlignmentFlag.AlignHCenter, '↑')
+
+    if self.numbers_drown:
         for i in range(len(self.ver)):
             qp.drawText(self.ver[i], QtCore.Qt.AlignmentFlag.AlignHCenter, str(self.verJ_val[i]))
         for i in range(len(self.hor)):

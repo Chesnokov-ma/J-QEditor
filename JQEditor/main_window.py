@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout
+from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QLabel
 from PyQt6.QtWidgets import QPushButton
 from PyQt6.QtGui import QIcon
 
@@ -15,17 +15,17 @@ class MainWindow(QMainWindow):
         all_up_button_clicked, invert_clicked, readmfsys_button_clicked
     from .events import paintEvent, mousePressEvent
     from .draw_chess_board import drawChessBoard
-    from .func import _read_tmp_cell, _set_numbers, _clear_numbers
+    from .func import _read_tmp_cell, _set_numbers, _clear_numbers, _update_app, update_info, _only_spins
     from .create_cell import create_cell
     from .scaler import scale_cell
     from .randomize_cell import randomize_cell
     from .form_menu import create_menu
 
-
     n = None    # размер системы
     is_downloaded = False   # загружен ли файл в память
     mfsys_is_downloaded = False
     numbers_drown = True
+    spins_drown = True
 
     all_down = False    # все спины вниз
     J_full = []     # связи каждый-с-каждым
@@ -34,7 +34,7 @@ class MainWindow(QMainWindow):
     spins_val = []
 
     x_offset = 0
-    y_offset = 120  # отступ для корректной отрисовки окна
+    y_offset = 100  # отступ для корректной отрисовки окна
 
     secondWindow = None
 
@@ -50,12 +50,14 @@ class MainWindow(QMainWindow):
 
         self.spins_data = SpinData()
         self.calc = Calculator()
+        # self.stat_widget = self.calc.stat_widget
 
         self.main_widget = QWidget()
         paint_widget = QWidget()
-        paint_widget.resize(600, 100)
+        paint_widget.setMinimumSize(600, 600)
         main_layout = QVBoxLayout()
         main_layout.addWidget(paint_widget)
+        main_layout.addWidget(self.calc.stat_widget)
 
         # read_button = QPushButton('Выбрать файл')
         # write_button = QPushButton('Записать в файл')
@@ -81,4 +83,6 @@ class MainWindow(QMainWindow):
         self.create_button.clicked.connect(self.create_cell)
         self.scale_button.clicked.connect(self.scale_cell)
         self.randomize_button.clicked.connect(self.randomize_cell)
+
+
 
