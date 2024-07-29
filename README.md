@@ -18,6 +18,7 @@
 
 ```bash
 git clone https://github.com/Chesnokov-ma/J-QEditor.git
+cd J-QEditor
 python -m venv venv
 .venv/bin/activate
 pip install -r requirements.txt
@@ -28,9 +29,11 @@ python main.py
 
 ```bash
 git clone https://github.com/Chesnokov-ma/J-QEditor.git
+cd J-QEditor
 python -m venv venv
 .venv/bin/activate
 pip install -r requirements.txt
+
 pip install pyinstaller
 python -m PyInstaller --onefile --windowed -n JQEditor main.py
 ```
