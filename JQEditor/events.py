@@ -5,11 +5,11 @@ from PyQt6.QtCore import Qt
 def paintEvent(self, event):
     """Отрисовка графики с помощью QPainter"""
     if self.is_downloaded:
-        qp = QPainter()
-        qp.begin(self)
-        qp.setFont(QFont('Decorative', 20))
-        self.drawChessBoard(qp, self.n)
-        qp.end()
+        self.qp = QPainter()
+        self.qp.begin(self)
+        self.qp.setFont(QFont('Decorative', 20))
+        self.drawChessBoard(self.qp, self.n)
+        self.qp.end()
 
 
 def mousePressEvent(self, event):
@@ -79,7 +79,7 @@ def mousePressEvent(self, event):
             si += 1
 
         if self.is_downloaded:
-            self.calc.update_info()
+            self.calc.update_info(self.calc_shown)
             self._update_app()
 
 

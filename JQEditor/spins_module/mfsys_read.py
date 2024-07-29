@@ -4,8 +4,12 @@ from math import sqrt
 
 def read_mfsys(self):
     fpath = QFileDialog.getOpenFileName(caption='Чтение файла', filter="Data (*.mfsys);;All files (*.*)")[0]
-    with open(fpath, 'r') as f:
-        read_info = f.readlines()
+
+    try:
+        with open(fpath, 'r') as f:
+            read_info = f.readlines()
+    except FileNotFoundError:
+        return
 
     try:
         n = sqrt(int(read_info[4].replace('size=', '').replace('\n', '')))

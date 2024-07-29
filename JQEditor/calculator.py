@@ -137,15 +137,25 @@ class Calculator:
 
         return widget
 
-    def update_info(self):
-        self.info_E0.setText(f'E0 = {self.current_E0}')
-        self.info_E1.setText(f'E1 = None')
-        self.info_Jsum.setText(f'Jsum = {self.current_Jsum}')
-        self.info_P.setText('P = {:.2f}'.format(self.current_P))
-        self.info_fp_p.setText(f'Fp_plus (+3 -1) = {self.current_fp_p}')
-        self.info_fp_m.setText(f'Fp_min (+1 -3) = {self.current_fp_m}')
-        self.info_fp_sum.setText(f'Fp_sum = {self.current_fp_sum}')
-        self.info_jmax.setText(f'J max = {self.jmax}')
+    def update_info(self, shown):
+        if shown:
+            self.info_E0.setText(f'E0 = {self.current_E0}')
+            self.info_E1.setText(f'E1 = None')
+            self.info_Jsum.setText(f'Jsum = {self.current_Jsum}')
+            self.info_P.setText('P = {:.2f}'.format(self.current_P))
+            self.info_fp_p.setText(f'Fp_plus (+3 -1) = {self.current_fp_p}')
+            self.info_fp_m.setText(f'Fp_min (+1 -3) = {self.current_fp_m}')
+            self.info_fp_sum.setText(f'Fp_sum = {self.current_fp_sum}')
+            self.info_jmax.setText(f'J max = {self.jmax}')
+        else:
+            self.info_E0.setText(f'')
+            self.info_E1.setText(f'')
+            self.info_Jsum.setText(f'')
+            self.info_P.setText('')
+            self.info_fp_p.setText(f'')
+            self.info_fp_m.setText(f'')
+            self.info_fp_sum.setText(f'')
+            self.info_jmax.setText(f'')
 
     @property
     def stat_widget(self):

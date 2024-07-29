@@ -1,6 +1,7 @@
-from PyQt6.QtCore import QRect
-from PyQt6.QtGui import QColor
+from PyQt6.QtCore import QRect, Qt
+from PyQt6.QtGui import QColor, QPainter, QImage
 from PyQt6 import QtCore
+from PyQt6.QtWidgets import QFileDialog
 
 
 def drawChessBoard(self, qp, n):
@@ -20,6 +21,18 @@ def drawChessBoard(self, qp, n):
 
     _ignore = 0
 
+    # выбор цветов
+
+    if self.background_color == 0:
+        color_spin = QColor(220, 220, 220)
+        color_empty = QColor(255, 255, 255)
+    elif self.background_color == 1:
+        color_spin = QColor(255, 255, 255)
+        color_empty = QColor(255, 255, 255)
+    else:
+        color_spin = QColor(220, 220, 220)
+        color_empty = QColor(220, 220, 220)
+
     hi = 0; vi = 0
     x = 0; y = 0
     temp = 0
@@ -29,10 +42,10 @@ def drawChessBoard(self, qp, n):
 
             if temp == 0:
                 if j % 2 == 0:
-                    qp.setBrush(QColor(220, 220, 220))
+                    qp.setBrush(color_spin)
                     spin = True
                 else:
-                    qp.setBrush(QColor(255, 255, 255))
+                    qp.setBrush(color_empty)
                 temp += 1
             else:
                 if i % 2 != 0:
@@ -42,7 +55,7 @@ def drawChessBoard(self, qp, n):
                     elif self.verJ_val[vi] == -1:
                         qp.setBrush(QColor(170, 170, 255))
                     else:
-                        qp.setBrush(QColor(255, 255, 255))
+                        qp.setBrush(color_empty)
                     vi += 1
                     pass
                 else:
@@ -54,7 +67,7 @@ def drawChessBoard(self, qp, n):
                         elif self.horJ_val[hi] == -1:
                             qp.setBrush(QColor(170, 170, 255))
                         else:
-                            qp.setBrush(QColor(255, 255, 255))
+                            qp.setBrush(color_empty)
                         hi += 1
 
                 temp -= 1
@@ -96,3 +109,19 @@ def drawChessBoard(self, qp, n):
             qp.drawText(self.ver[i], QtCore.Qt.AlignmentFlag.AlignHCenter, str(self.verJ_val[i]))
         for i in range(len(self.hor)):
             qp.drawText(self.hor[i], QtCore.Qt.AlignmentFlag.AlignHCenter, str(self.horJ_val[i]))
+
+
+def saveChessBoard(self, qp):
+    fpath, _ = QFileDialog.getSaveFileName(None, 'Запись файла', '', 'png (*.png);;jpg (*.jpg);;bmp (*.bmp)')
+    if fpath:
+        image = QImage(self.size(), QImage.Format.Format_ARGB32)
+        image.fill(Qt.GlobalColor.transparent)
+
+        painter = QPainter(image)
+        self.render(painter)
+        painter.end()
+
+        rect_to_copy = QRect(0, 22, image.width(), image.height() - self.y_offset - 2)
+        cropped_image = image.copy(rect_to_copy)
+
+        cropped_image.save(fpath)

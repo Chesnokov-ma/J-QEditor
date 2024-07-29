@@ -14,8 +14,9 @@ class MainWindow(QMainWindow):
     from .slots import read_button_clicked, write_button_clicked, all_down_button_clicked, \
         all_up_button_clicked, invert_clicked, readmfsys_button_clicked
     from .events import paintEvent, mousePressEvent
-    from .draw_chess_board import drawChessBoard
-    from .func import _read_tmp_cell, _set_numbers, _clear_numbers, _update_app, update_info, _only_spins
+    from .draw_chess_board import drawChessBoard, saveChessBoard
+    from .func import _read_tmp_cell, _set_numbers, _clear_numbers, _update_app, update_info, _only_spins, _only_j, \
+        _background_color_0, _background_color_1, _background_color_2, _calc_shown, _calc_not_shown, _save_qimage, _run_model0
     from .create_cell import create_cell
     from .scaler import scale_cell
     from .randomize_cell import randomize_cell
@@ -24,8 +25,14 @@ class MainWindow(QMainWindow):
     n = None    # размер системы
     is_downloaded = False   # загружен ли файл в память
     mfsys_is_downloaded = False
+    qp = None
+
+    # отрисовка чисел/спинов
     numbers_drown = True
     spins_drown = True
+
+    # цвет фона (0 - стандарт, 1 - белый фон, 2- серый фон)
+    background_color = 0
 
     all_down = False    # все спины вниз
     J_full = []     # связи каждый-с-каждым
@@ -37,6 +44,8 @@ class MainWindow(QMainWindow):
     y_offset = 100  # отступ для корректной отрисовки окна
 
     secondWindow = None
+
+    calc_shown = True
 
     def __init__(self, parent=None):
         """
