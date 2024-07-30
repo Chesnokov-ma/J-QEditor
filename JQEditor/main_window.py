@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
     from .events import paintEvent, mousePressEvent
     from .draw_chess_board import drawChessBoard, saveChessBoard
     from .func import _read_tmp_cell, _set_numbers, _clear_numbers, _update_app, update_info, _only_spins, _only_j, \
-        _background_color_0, _background_color_1, _background_color_2, _calc_shown, _calc_not_shown, _save_qimage, _run_model0
+        _background_color_0, _background_color_1, _background_color_2, _calc_shown, _calc_not_shown, _save_qimage
     from .create_cell import create_cell
     from .scaler import scale_cell
     from .randomize_cell import randomize_cell

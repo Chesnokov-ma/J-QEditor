@@ -1,4 +1,4 @@
-from JQEditor.JQ_plt.model0 import draw_model0
+# from JQEditor.JQ_plt.model0 import draw_model0
 from math import sqrt
 
 
@@ -94,6 +94,6 @@ def _save_qimage(self):
         self.saveChessBoard(self.qp)
 
 
-def _run_model0(self):
-    if self.is_downloaded:
-        draw_model0(self.n, self.horJ_val, self.verJ_val)
+# def _run_model0(self):
+#     if self.is_downloaded:
+#         draw_model0(self.n, self.horJ_val, self.verJ_val)

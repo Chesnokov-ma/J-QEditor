@@ -74,9 +74,9 @@ def create_menu(self):
     screenshot_action.triggered.connect(self._save_qimage)
 
     # Действие - Модель (matplotlib grid)
-    plt_model0_action = QAction("&Модель (matplotlib grid)", self)
-    action_menu.addAction(plt_model0_action)
-    plt_model0_action.triggered.connect(self._run_model0)
+    # plt_model0_action = QAction("&Модель (matplotlib grid)", self)
+    # action_menu.addAction(plt_model0_action)
+    # plt_model0_action.triggered.connect(self._run_model0)
 
     # Вид
     numbers_drawn_action = QAction("&Все подписи", self)
