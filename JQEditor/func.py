@@ -12,7 +12,7 @@ def update_info(self, show):
         self.calc.get_E(self.n, self.spins_data.spins_val, self.horJ_val, self.verJ_val)
         self.calc.get_Jsum_P(self.n, self.horJ_val, self.verJ_val)
         self.calc.get_fp_p(self.n, self.horJ_val, self.verJ_val)
-    self.calc.update_info(show)
+        self.calc.update_info(show)
 
 
 def _read_tmp_cell(self, n, filename):

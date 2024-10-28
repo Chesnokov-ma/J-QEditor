@@ -109,14 +109,14 @@ def create_menu(self):
     design_menu.addAction(gray_background)
 
     # Калькулятор
-    calc_shown = QAction("&Включен", self)
-    calc_not_shown = QAction("&Выключен", self)
+    # calc_shown = QAction("&Включен", self)
+    # calc_not_shown = QAction("&Выключен", self)
 
-    calc_shown.triggered.connect(self._calc_shown)
-    calc_not_shown.triggered.connect(self._calc_not_shown)
+    # calc_shown.triggered.connect(self._calc_shown)
+    # calc_not_shown.triggered.connect(self._calc_not_shown)
 
-    calc_menu.addAction(calc_shown)
-    calc_menu.addAction(calc_not_shown)
+    # calc_menu.addAction(calc_shown)
+    # calc_menu.addAction(calc_not_shown)
 
     # Справка
     help_1 = QAction("&Масштабирование", self)
