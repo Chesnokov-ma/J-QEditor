@@ -79,7 +79,7 @@ def mousePressEvent(self, event):
             si += 1
 
         if self.is_downloaded:
-            # self.calc.update_info(self.calc_shown)
+            self.calc.update_info(self.calc_shown)
             self._update_app()
 
 

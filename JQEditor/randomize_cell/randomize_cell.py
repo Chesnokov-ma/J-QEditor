@@ -70,7 +70,7 @@ def _randomize_cell(self):
         # print(current_spin)
 
         # обновить информацию о системе
-        self.parent().update_info(False)
+        self.parent().update_info()
 
 
     # записать результат

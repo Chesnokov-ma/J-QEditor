@@ -41,11 +41,11 @@ class MainWindow(QMainWindow):
     spins_val = []
 
     x_offset = 0
-    y_offset = 20  # отступ для корректной отрисовки окна (стандартное = 120)
+    y_offset = 100  # отступ для корректной отрисовки окна
 
     secondWindow = None
 
-    calc_shown = False
+    calc_shown = True
 
     def __init__(self, parent=None):
         """
@@ -58,15 +58,15 @@ class MainWindow(QMainWindow):
         self.create_menu()
 
         self.spins_data = SpinData()
-        # self.calc = Calculator()
+        self.calc = Calculator()
         # self.stat_widget = self.calc.stat_widget
 
         self.main_widget = QWidget()
         paint_widget = QWidget()
-        paint_widget.setMinimumSize(50, 50)
+        paint_widget.setMinimumSize(600, 600)
         main_layout = QVBoxLayout()
         main_layout.addWidget(paint_widget)
-        # main_layout.addWidget(self.calc.stat_widget)
+        main_layout.addWidget(self.calc.stat_widget)
 
         # read_button = QPushButton('Выбрать файл')
         # write_button = QPushButton('Записать в файл')
