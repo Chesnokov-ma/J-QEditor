@@ -12,6 +12,12 @@ def paintEvent(self, event):
         self.qp.end()
 
 
+def resizeEvent(self, event):
+    new_width = event.size().width()
+    new_height = int(new_width / self.aspect_ratio)
+    self.resize(new_width, new_height)
+    
+
 def mousePressEvent(self, event):
     """Обработка нажатий мыши"""
 

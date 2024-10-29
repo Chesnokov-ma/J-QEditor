@@ -1,5 +1,5 @@
 from PyQt6.QtCore import QRect, Qt
-from PyQt6.QtGui import QColor, QPainter, QImage
+from PyQt6.QtGui import QColor, QPainter, QImage, QFont
 from PyQt6 import QtCore
 from PyQt6.QtWidgets import QFileDialog
 
@@ -32,6 +32,10 @@ def drawChessBoard(self, qp, n):
     else:
         color_spin = QColor(220, 220, 220)
         color_empty = QColor(220, 220, 220)
+
+    # размер шрифта
+    font = QFont();
+    font.setPixelSize(12);
 
     hi = 0; vi = 0
     x = 0; y = 0

@@ -102,7 +102,7 @@ class Calculator:
         widget = QWidget()
         layout = QHBoxLayout()
         widget.setLayout(layout)
-        # widget.setMinimumSize(100, 50)
+        widget.setMaximumHeight(80)
 
         left_layout = QVBoxLayout()
         mid_layout = QVBoxLayout()

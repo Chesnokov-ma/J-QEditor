@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
     from .read_write_data import read_data, write_data
     from .slots import read_button_clicked, write_button_clicked, all_down_button_clicked, \
         all_up_button_clicked, invert_clicked, readmfsys_button_clicked
-    from .events import paintEvent, mousePressEvent
+    from .events import paintEvent, mousePressEvent, resizeEvent
     from .draw_chess_board import drawChessBoard, saveChessBoard
     from .func import _read_tmp_cell, _set_numbers, _clear_numbers, _update_app, update_info, _only_spins, _only_j, \
         _background_color_0, _background_color_1, _background_color_2, _calc_shown, _calc_not_shown, _save_qimage
@@ -53,7 +53,8 @@ class MainWindow(QMainWindow):
         """
         super().__init__(parent)
         self.setWindowTitle('J QEditor')
-        self.resize(600 + self.x_offset, 620 + self.y_offset)
+        self.resize(500 + self.x_offset, 520 + self.y_offset)
+        self.aspect_ratio = (500 + self.x_offset) / (520 + self.y_offset)
         self.setWindowIcon(QIcon('./resources/icon.png'))
         self.create_menu()
 
@@ -63,7 +64,7 @@ class MainWindow(QMainWindow):
 
         self.main_widget = QWidget()
         paint_widget = QWidget()
-        paint_widget.setMinimumSize(600, 600)
+        paint_widget.setMinimumSize(100, 100)
         main_layout = QVBoxLayout()
         main_layout.addWidget(paint_widget)
         main_layout.addWidget(self.calc.stat_widget)
@@ -92,6 +93,3 @@ class MainWindow(QMainWindow):
         self.create_button.clicked.connect(self.create_cell)
         self.scale_button.clicked.connect(self.scale_cell)
         self.randomize_button.clicked.connect(self.randomize_cell)
-
-
-
