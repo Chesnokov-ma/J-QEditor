@@ -39,7 +39,7 @@ class Calculator:
         vi = 0
         for i in range(n * n):
             if i < (n * n - n):
-                sum0 += -1 * verJ_val[vi] * spins[i] * spins[i + n]
+                sum0 += verJ_val[vi] * spins[i] * spins[i + n]
                 vi += 1
 
         if sum0 < self.min_e0:
