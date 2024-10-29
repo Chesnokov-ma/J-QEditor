@@ -33,13 +33,13 @@ class Calculator:
         hi = 0
         for i in range(n * n):
             if (i + 1) % n != 0:
-                sum0 += horJ_val[hi] * spins[i] * spins[i + 1]
+                sum0 += -1 * horJ_val[hi] * spins[i] * spins[i + 1]
                 hi += 1
 
         vi = 0
         for i in range(n * n):
             if i < (n * n - n):
-                sum0 += verJ_val[vi] * spins[i] * spins[i + n]
+                sum0 += -1 * verJ_val[vi] * spins[i] * spins[i + n]
                 vi += 1
 
         if sum0 < self.min_e0:

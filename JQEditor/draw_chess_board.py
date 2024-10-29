@@ -114,6 +114,8 @@ def drawChessBoard(self, qp, n):
         for i in range(len(self.hor)):
             qp.drawText(self.hor[i], QtCore.Qt.AlignmentFlag.AlignHCenter, str(self.horJ_val[i]))
 
+    # print(self.spins_val)
+
 
 def saveChessBoard(self, qp):
     fpath, _ = QFileDialog.getSaveFileName(None, 'Запись файла', '', 'png (*.png);;jpg (*.jpg);;bmp (*.bmp)')
