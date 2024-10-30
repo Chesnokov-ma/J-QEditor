@@ -12,7 +12,7 @@ class MainWindow(QMainWindow):
 
     from .read_write_data import read_data, write_data
     from .slots import read_button_clicked, write_button_clicked, all_down_button_clicked, \
-        all_up_button_clicked, invert_clicked, readmfsys_button_clicked
+        all_up_button_clicked, invert_clicked, readmfsys_button_clicked, show_spins_button_clicked
     from .events import paintEvent, mousePressEvent, resizeEvent
     from .draw_chess_board import drawChessBoard, saveChessBoard
     from .func import _read_tmp_cell, _set_numbers, _clear_numbers, _update_app, update_info, _only_spins, _only_j, \
@@ -39,8 +39,6 @@ class MainWindow(QMainWindow):
     verJ_val = []; horJ_val = []    # вертикальные; горизонтальные связи между соседними спинами
     spins = []; ver = []; hor = []  # прямоугольники для обработки нажатий
     spins_val = []
-
-    spins_val = [0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1]
 
     x_offset = 0
     y_offset = 100  # отступ для корректной отрисовки окна

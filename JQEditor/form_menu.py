@@ -22,10 +22,14 @@ def create_menu(self):
     file_menu.addAction(open_action)
 
     # Файл - Загрузить спины
-    spin_action = QAction("&Загрузить спины", self)
-    # open_action.setShortcut("Ctrl+O")
+    spin_action = QAction("&Загрузить mfsys", self)
     spin_action.triggered.connect(self.readmfsys_button_clicked)
     file_menu.addAction(spin_action)
+
+    # Файл - Просмотр спинов
+    spin_show_action = QAction("&Просмотр спинов", self)
+    spin_show_action.triggered.connect(self.show_spins_button_clicked)
+    file_menu.addAction(spin_show_action)
 
     # Файл - Сохранить как
     save_action = QAction("&Сохранить как", self)

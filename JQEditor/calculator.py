@@ -3,7 +3,8 @@ from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButt
 
 class Calculator:
     current_E0 = 0
-    current_E1 = 0
+    current_size = 0
+    cur_n = 0
     current_Jsum = 0
     current_P = 0
     current_fp_p = 0
@@ -17,7 +18,7 @@ class Calculator:
         self.min_state0 = []
 
         self.info_E0 = QLabel(f'E0 = {self.current_E0}')
-        self.info_E1 = QLabel(f'E1 = None')
+        self.info_size = QLabel(f'N = {self.current_size}')
         self.info_Jsum = QLabel(f'Jsum = {self.current_Jsum}')
         self.info_P = QLabel(f'P = {self.current_P}')
         self.info_fp_p = QLabel(f'Fp plus (+3 -1) = {self.current_fp_p}')
@@ -47,6 +48,8 @@ class Calculator:
             self.min_state0 = spins
 
         self.current_E0 = sum0
+        self.cur_n = n
+        self.current_size = self.cur_n ** 2
 
     def get_fp_p(self, n, horJ_val, verJ_val):
         """
@@ -113,7 +116,7 @@ class Calculator:
 
         labels = [
             self.info_E0,
-            self.info_E1,
+            self.info_size
         ]
 
         labels1 = [
@@ -140,7 +143,7 @@ class Calculator:
     def update_info(self, shown):
         if shown:
             self.info_E0.setText(f'E0 = {self.current_E0}')
-            self.info_E1.setText(f'E1 = None')
+            self.info_size.setText(f'N = {self.current_size} ({self.cur_n} x {self.cur_n})')
             self.info_Jsum.setText(f'Jsum = {self.current_Jsum}')
             self.info_P.setText('P = {:.2f}'.format(self.current_P))
             self.info_fp_p.setText(f'Fp_plus (+3 -1) = {self.current_fp_p}')
@@ -148,14 +151,14 @@ class Calculator:
             self.info_fp_sum.setText(f'Fp_sum = {self.current_fp_sum}')
             self.info_jmax.setText(f'J max = {self.jmax}')
         else:
-            self.info_E0.setText(f'')
-            self.info_E1.setText(f'')
-            self.info_Jsum.setText(f'')
+            self.info_E0.setText('')
+            self.info_size.setText('')
+            self.info_Jsum.setText('')
             self.info_P.setText('')
-            self.info_fp_p.setText(f'')
-            self.info_fp_m.setText(f'')
-            self.info_fp_sum.setText(f'')
-            self.info_jmax.setText(f'')
+            self.info_fp_p.setText('')
+            self.info_fp_m.setText('')
+            self.info_fp_sum.setText('')
+            self.info_jmax.setText('')
 
     @property
     def stat_widget(self):
