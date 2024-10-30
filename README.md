@@ -23,10 +23,10 @@ pip install -r requirements.txt
 python main.py
 ```
 
-# Для Linux
+### Для Linux
 ```bash
 source .venv/bin/activate
-```bash
+```
 
 
 ## Сборка
